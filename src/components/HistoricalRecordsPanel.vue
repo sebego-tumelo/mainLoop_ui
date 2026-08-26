@@ -205,9 +205,49 @@ const togglePredictionExpand = (id) => {
 
         <div class="flex items-center justify-between text-[10px] text-ui-charcoal/80 font-bold">
           <span>Cost: {{ formatZAR(pred.cost) }} | Won: {{ formatZAR(pred.totalWon) }}</span>
-          <span class="ui-heading text-ui-charcoal">
-            {{ pred.topMatchCount > 0 ? `Best: ${pred.topMatchCount}m` : '0m' }}
-          </span>
+          <div class="flex items-center gap-2">
+            <span class="ui-heading text-ui-charcoal">
+              {{ pred.topMatchCount > 0 ? `Best: ${pred.topMatchCount}m` : '0m' }}
+            </span>
+            <button
+              @click="togglePredictionExpand(pred.id)"
+              class="p-1.5 rounded-full bg-white hover:bg-canvas-peach border border-ui-charcoal transition-all"
+            >
+              <ChevronUp v-if="expandedPredictionId === pred.id" class="w-3 h-3" />
+              <ChevronDown v-else class="w-3 h-3" />
+            </button>
+          </div>
+        </div>
+
+        <!-- Expanded Sets List -->
+        <div
+          v-if="expandedPredictionId === pred.id"
+          class="mt-3 pt-3 border-t border-ui-charcoal/20 space-y-2"
+        >
+          <div
+            v-for="(set, sIdx) in pred.sets"
+            :key="set.id"
+            class="p-3 rounded-[16px] bg-white border border-ui-charcoal"
+          >
+            <div class="flex items-center justify-between text-[10px]">
+              <span class="ui-heading text-ui-charcoal">Set #{{ set.setNumber || sIdx + 1 }}</span>
+              <span class="text-ui-charcoal font-black">
+                {{ (set.matchedNumbers?.length || 0) > 0
+                  ? `${set.matchedNumbers.length} Matched (${formatZAR(set.winAmount || 0)})`
+                  : '0 Matches' }}
+              </span>
+            </div>
+            <div class="flex items-center justify-between gap-1.5 mt-2">
+              <LottoBall
+                v-for="num in set.numbers"
+                :key="`hist-set-ball-${sIdx}-${num}`"
+                :number="num"
+                size="sm"
+                :isMatched="set.matchedNumbers?.includes(num)"
+                :variant="set.matchedNumbers?.includes(num) ? 'gold' : 'default'"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

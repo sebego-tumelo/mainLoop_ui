@@ -145,18 +145,18 @@ const handleSaveAndApply = () => {
   >
     <div
       id="modal-simulate-container"
-      class="w-full max-w-md bg-white border border-[#E7DFD5] rounded-3xl shadow-xl p-5 relative overflow-hidden flex flex-col max-h-[90vh] text-[#2C211C]"
+      class="w-full max-w-md bg-white border border-ui-charcoal rounded-[24px] shadow-xl p-5 relative overflow-hidden flex flex-col max-h-[90vh] text-ui-charcoal"
     >
-      <div class="flex items-center justify-between pb-3 border-b border-[#E7DFD5] mb-3">
+      <div class="flex items-center justify-between pb-3 border-b border-ui-charcoal/20 mb-3">
         <div class="flex items-center gap-2">
-          <div class="w-8 h-8 rounded-full bg-[#FFF3D9] border border-[#F6BD51]/40 flex items-center justify-center text-[#2C211C]">
-            <Dices class="w-4 h-4 text-[#F6BD51]" />
+          <div class="w-8 h-8 rounded-[16px] bg-metric-mint border border-ui-charcoal flex items-center justify-center text-ui-charcoal">
+            <Dices class="w-4 h-4" />
           </div>
           <div>
-            <h3 class="text-xs font-black uppercase tracking-wider text-[#2C211C]">
+            <h3 class="ui-heading text-xs tracking-wider text-ui-charcoal">
               OFFICIAL DRAW SIMULATOR
             </h3>
-            <p class="text-[10px] text-[#786C65] font-semibold">
+            <p class="ui-body text-[10px] text-ui-charcoal/70">
               Live 21:00 SAST Winning Ball Chamber
             </p>
           </div>
@@ -165,25 +165,25 @@ const handleSaveAndApply = () => {
         <button
           id="btn-close-simulate-modal"
           @click="onClose"
-          class="p-1 rounded-full text-[#786C65] hover:text-[#2C211C] hover:bg-[#FAF5EE] transition-colors cursor-pointer"
+          class="p-1 rounded-full text-ui-charcoal/70 hover:text-ui-charcoal hover:bg-canvas-peach transition-colors cursor-pointer"
         >
           <X class="w-5 h-5" />
         </button>
       </div>
 
-      <div class="space-y-3.5 my-1">
+      <div class="space-y-4 my-1">
         <!-- Chamber Simulation Stage -->
-        <div class="p-4 rounded-2xl bg-[#FAF5EE] border border-[#EADBCC] flex flex-col items-center justify-center min-h-[140px] relative overflow-hidden">
-          <div class="text-[10px] uppercase font-extrabold tracking-wider text-[#786C65] mb-3 flex items-center gap-1.5">
-            <Trophy class="w-3.5 h-3.5 text-[#F6BD51]" />
+        <div class="p-4 rounded-[24px] bg-canvas-peach/20 border border-ui-charcoal flex flex-col items-center justify-center min-h-[140px] relative overflow-hidden">
+          <div class="text-[10px] uppercase font-extrabold tracking-wider text-ui-charcoal/70 mb-3 flex items-center gap-1.5">
+            <Trophy class="w-3.5 h-3.5 text-ui-charcoal" />
             <span>Random Mechanical Ball Extraction</span>
           </div>
 
           <!-- Ball extraction slots -->
           <div class="flex items-center justify-center gap-2 min-h-[50px]">
             <template v-if="drawnNumbers.length === 0 && !isDrawing">
-              <span class="text-xs text-[#786C65] italic">
-                Press button below to extract 5 winning numbers
+              <span class="text-xs text-ui-charcoal/70 ui-body italic">
+                Press button below to extract
               </span>
             </template>
             <template v-else>
@@ -197,63 +197,56 @@ const handleSaveAndApply = () => {
               <div
                 v-for="idx in Math.max(0, 5 - drawnNumbers.length)"
                 :key="`placeholder-slot-${idx}`"
-                class="w-10 h-10 rounded-full border border-dashed border-[#D5C6B5] flex items-center justify-center text-[#786C65] font-bold text-xs bg-white animate-pulse"
+                class="w-10 h-10 rounded-full border border-dashed border-ui-charcoal/50 flex items-center justify-center text-ui-charcoal font-bold text-xs bg-white"
               >
                 ?
               </div>
             </template>
           </div>
 
-          <div v-if="isDrawing" class="mt-3 text-[11px] font-bold text-[#E0694B] animate-pulse">
+          <div v-if="isDrawing" class="mt-3 text-[11px] ui-heading text-metric-salmon animate-pulse">
             Extracting ball {{ drawnNumbers.length + 1 }} of 5...
           </div>
         </div>
 
-        <!-- Evaluation Outcome if prediction exists -->
+        <!-- Evaluation Outcome -->
         <div
           v-if="evaluationResult && currentPrediction"
           id="simulation-evaluation-summary"
-          class="p-3 rounded-2xl bg-[#FAF5EE] border border-[#EADBCC] space-y-1.5 text-xs font-semibold"
+          class="p-4 rounded-[24px] bg-canvas-peach/30 border border-ui-charcoal space-y-2 text-xs"
         >
-          <div class="flex items-center justify-between text-[#786C65]">
+          <div class="flex items-center justify-between text-ui-charcoal/80 ui-body">
             <span>Prediction Sets Evaluated:</span>
-            <span class="font-black text-[#2C211C]">{{ currentPrediction.sets.length }} Boards</span>
+            <span class="font-black text-ui-charcoal">{{ currentPrediction.sets.length }} Boards</span>
           </div>
-          <div class="flex items-center justify-between text-[#786C65]">
+          <div class="flex items-center justify-between text-ui-charcoal/80 ui-body">
             <span>Total Payout Won:</span>
             <span
               :class="[
-                'px-2.5 py-0.5 rounded-full font-black border',
+                'px-2.5 py-0.5 rounded-full font-black border border-ui-charcoal',
                 evaluationResult.totalWon > 0
-                  ? 'bg-[#E8F5E9] text-[#2E7D32] border-[#C8E6C9]'
-                  : 'bg-white text-[#786C65] border-[#E7DFD5]'
+                  ? 'bg-metric-mint text-ui-charcoal'
+                  : 'bg-white text-ui-charcoal'
               ]"
             >
               {{ formatZAR(evaluationResult.totalWon) }}
             </span>
           </div>
-          <div class="flex items-center justify-between text-[#786C65] pt-1.5 border-t border-[#EADBCC]">
-            <span>Net Session Result:</span>
-            <span
-              :class="[
-                'font-black',
-                evaluationResult.totalWon >= currentPrediction.cost
-                  ? 'text-[#2E7D32]'
-                  : 'text-[#C62828]'
-              ]"
-            >
+          <div class="flex items-center justify-between text-ui-charcoal pt-2 border-t border-ui-charcoal/20">
+            <span class="ui-body">Net Session Result:</span>
+            <span class="ui-heading">
               {{ formatSignedZAR(evaluationResult.totalWon - currentPrediction.cost) }}
             </span>
           </div>
         </div>
 
-        <!-- Warning if no current active prediction -->
+        <!-- Warning -->
         <div
           v-if="!currentPrediction"
-          class="p-2.5 rounded-2xl bg-[#FFF3D9] border border-[#F6BD51] text-[#784A0E] text-[11px] font-semibold flex items-center gap-2"
+          class="p-3 rounded-[24px] bg-nav-sand border border-ui-charcoal text-ui-charcoal text-[11px] ui-body flex items-center gap-2"
         >
-          <AlertCircle class="w-4 h-4 shrink-0 text-[#F6BD51]" />
-          <span>Note: No active prediction. This will register as a standalone official draw.</span>
+          <AlertCircle class="w-4 h-4 shrink-0" />
+          <span>Note: No active prediction. Registering as standalone draw.</span>
         </div>
 
         <!-- Controls -->
@@ -262,7 +255,7 @@ const handleSaveAndApply = () => {
             id="btn-trigger-draw-simulation"
             @click="handleSimulateDraw"
             :disabled="isDrawing"
-            class="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-full bg-[#F6BD51] hover:bg-[#F4B238] text-[#2C211C] font-black text-xs uppercase tracking-wider shadow-sm transition-all duration-150 active:scale-98 disabled:opacity-50 border border-[#E5A836] cursor-pointer"
+            class="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-[24px] bg-nav-sand hover:bg-nav-sand/90 text-ui-charcoal font-black text-xs uppercase tracking-wider border border-ui-charcoal transition-all active:scale-95 disabled:opacity-50"
           >
             <Dices class="w-4 h-4" />
             <span>{{ isDrawing ? 'Extracting Balls...' : '🎲 Spin & Extract 5 Balls' }}</span>
@@ -272,7 +265,7 @@ const handleSaveAndApply = () => {
             <button
               id="btn-reset-simulation"
               @click="handleSimulateDraw"
-              class="py-2.5 px-3 rounded-full bg-[#FAF5EE] hover:bg-[#F4EFE6] text-[#2C211C] font-bold text-xs uppercase tracking-wide transition-colors border border-[#E7DFD5] cursor-pointer"
+              class="py-3 px-3 rounded-[24px] bg-canvas-peach/50 hover:bg-canvas-peach text-ui-charcoal font-bold text-xs border border-ui-charcoal transition-all"
             >
               Re-spin
             </button>
@@ -280,9 +273,9 @@ const handleSaveAndApply = () => {
             <button
               id="btn-apply-and-save-draw"
               @click="handleSaveAndApply"
-              class="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-full bg-[#2C211C] hover:bg-black text-white font-black text-xs uppercase tracking-wider shadow-xs transition-colors cursor-pointer"
+              class="flex items-center justify-center gap-1.5 py-3 px-3 rounded-[24px] bg-ui-charcoal text-white font-black text-xs uppercase tracking-wider transition-all"
             >
-              <CheckCircle2 class="w-4 h-4 text-[#F6BD51]" />
+              <CheckCircle2 class="w-4 h-4" />
               <span>Apply to Ledger</span>
             </button>
           </div>

@@ -36,21 +36,19 @@ const sizeClasses = {
 
 const colorClasses = computed(() => {
   if (props.isMatched) {
-    return 'bg-[#F6BD51] text-[#2C211C] border-2 border-[#2C211C] shadow-md ring-2 ring-[#F6BD51]/60 font-black';
+    return 'bg-nav-sand text-ui-charcoal border-2 border-ui-charcoal font-black';
   } else if (props.variant === 'gold') {
-    return 'bg-gradient-to-b from-[#FED17A] to-[#F6BD51] text-[#2C211C] border border-[#E5A836] shadow-sm';
+    return 'bg-metric-orange text-ui-charcoal border border-ui-charcoal';
   } else if (props.variant === 'peach') {
-    return 'bg-[#FFB59E] text-[#6B2F1F] border border-[#EFA38B]';
+    return 'bg-metric-salmon text-ui-charcoal border border-ui-charcoal';
   } else if (props.variant === 'mint') {
-    return 'bg-[#B7E1D2] text-[#1D4F3E] border border-[#9FD3C1]';
+    return 'bg-metric-mint text-ui-charcoal border border-ui-charcoal';
   } else if (props.variant === 'lavender') {
-    return 'bg-[#D2CFF7] text-[#3D3577] border border-[#BBB7EE]';
+    return 'bg-metric-lavender text-ui-charcoal border border-ui-charcoal';
   } else if (props.variant === 'rose') {
-    return 'bg-[#F8B6B7] text-[#712233] border border-[#E99FA1]';
-  } else if (props.variant === 'accent') {
-    return 'bg-[#FFF3D9] text-[#784A0E] border border-[#F6BD51] font-bold';
+    return 'bg-metric-salmon/60 text-ui-charcoal border border-ui-charcoal';
   } else {
-    return 'bg-white text-[#2C221E] border border-[#E7DFD5] shadow-xs';
+    return 'bg-white text-ui-charcoal border border-ui-charcoal';
   }
 });
 </script>

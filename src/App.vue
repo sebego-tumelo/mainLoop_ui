@@ -83,14 +83,7 @@ const scrollToSection = (id, sectionName) => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-[#FBF7F0] text-[#2C211C] font-sans flex flex-col items-center selection:bg-[#F6BD51] selection:text-[#2C211C] pb-28">
-    <!-- Soft warm background curved lines / gradients inspired by the reference illustration -->
-    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0 opacity-40">
-      <div class="absolute -top-20 right-0 w-96 h-96 bg-[#FFE4B5]/50 rounded-full blur-3xl" />
-      <div class="absolute top-1/3 -left-20 w-80 h-80 bg-[#FFD1C1]/40 rounded-full blur-3xl" />
-      <div class="absolute bottom-20 right-10 w-80 h-80 bg-[#D2CFF7]/30 rounded-full blur-3xl" />
-    </div>
-
+  <div class="min-h-screen text-ui-charcoal font-sans flex flex-col items-center selection:bg-metric-orange selection:text-ui-charcoal pb-28">
     <!-- Main Container Formatted to Mobile Frame Width -->
     <div class="relative z-10 w-full max-w-md mx-auto flex flex-col min-h-screen">
       <!-- App Header -->
@@ -101,7 +94,7 @@ const scrollToSection = (id, sectionName) => {
       />
 
       <!-- Main Body Flowing Content -->
-      <main class="flex-1 px-3.5 py-4 space-y-4">
+      <main class="flex-1 px-4 py-4 space-y-4">
         <!-- 1. Financial Ledger 4-Quadrant Pastel Grid (Needs Satisfaction, Activity, Sleep, Wellness from image) -->
         <FinancialLedgerPanel
           :stats="financialStats"
@@ -132,7 +125,7 @@ const scrollToSection = (id, sectionName) => {
       <div class="fixed bottom-4 left-0 right-0 z-40 px-6 pointer-events-none">
         <nav
           id="mobile-bottom-nav"
-          class="max-w-xs sm:max-w-sm mx-auto bg-[#F6BD51] text-[#2C211C] rounded-full py-2.5 px-5 shadow-lg border border-[#E5A836] flex items-center justify-between pointer-events-auto transition-transform duration-200 hover:scale-[1.02]"
+          class="max-w-xs sm:max-w-sm mx-auto bg-nav-sand text-ui-charcoal rounded-[24px] py-2.5 px-5 border border-ui-charcoal flex items-center justify-between pointer-events-auto transition-transform duration-200 hover:scale-[1.02]"
         >
           <!-- 1. Location / Results -->
           <button
@@ -141,7 +134,7 @@ const scrollToSection = (id, sectionName) => {
             title="Results"
             :class="[
               'p-2 rounded-full transition-all cursor-pointer',
-              activeSection === 'result' ? 'bg-[#2C211C] text-[#F6BD51]' : 'text-[#2C211C] hover:bg-black/10'
+              activeSection === 'result' ? 'bg-ui-charcoal text-white' : 'text-ui-charcoal hover:bg-ui-charcoal/10'
             ]"
           >
             <MapPin class="w-4 h-4" />
@@ -152,7 +145,7 @@ const scrollToSection = (id, sectionName) => {
             id="nav-btn-predict"
             @click="isPredictModalOpen = true"
             title="AI Predict"
-            class="p-2 rounded-full text-[#2C211C] hover:bg-black/10 transition-all cursor-pointer"
+            class="p-2 rounded-full text-ui-charcoal hover:bg-ui-charcoal/10 transition-all cursor-pointer"
           >
             <Sparkles class="w-4 h-4" />
           </button>
@@ -164,7 +157,7 @@ const scrollToSection = (id, sectionName) => {
             title="Home"
             :class="[
               'p-2 rounded-full transition-all cursor-pointer',
-              activeSection === 'home' ? 'bg-[#2C211C] text-[#F6BD51]' : 'text-[#2C211C] hover:bg-black/10'
+              activeSection === 'home' ? 'bg-ui-charcoal text-white' : 'text-ui-charcoal hover:bg-ui-charcoal/10'
             ]"
           >
             <Home class="w-4 h-4" />
@@ -177,7 +170,7 @@ const scrollToSection = (id, sectionName) => {
             title="Financial Ledger"
             :class="[
               'p-2 rounded-full transition-all cursor-pointer',
-              activeSection === 'ledger' ? 'bg-[#2C211C] text-[#F6BD51]' : 'text-[#2C211C] hover:bg-black/10'
+              activeSection === 'ledger' ? 'bg-ui-charcoal text-white' : 'text-ui-charcoal hover:bg-ui-charcoal/10'
             ]"
           >
             <Coins class="w-4 h-4" />
@@ -190,7 +183,7 @@ const scrollToSection = (id, sectionName) => {
             title="History Log"
             :class="[
               'p-2 rounded-full transition-all cursor-pointer',
-              activeSection === 'history' ? 'bg-[#2C211C] text-[#F6BD51]' : 'text-[#2C211C] hover:bg-black/10'
+              activeSection === 'history' ? 'bg-ui-charcoal text-white' : 'text-ui-charcoal hover:bg-ui-charcoal/10'
             ]"
           >
             <History class="w-4 h-4" />

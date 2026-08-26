@@ -24,100 +24,100 @@ const isProfitable = computed(() => props.stats.netProfit >= 0);
   >
     <!-- 4-Quadrant Pastel Grid (Direct 1:1 match to the reference image) -->
     <div class="grid grid-cols-2 gap-2.5">
-      <!-- 1. Top Left: Soft Peach Card (Needs Satisfaction in reference) -->
+      <!-- 1. Top Left -->
       <div
         id="metric-current-cost"
-        class="p-3.5 rounded-2xl bg-[#FFB59E] border border-[#333333] text-[#2C211C] flex items-center justify-between transition-transform duration-150 hover:scale-[1.01]"
+        class="p-4 rounded-[24px] bg-metric-salmon border border-ui-charcoal text-ui-charcoal flex items-center justify-between"
       >
         <div class="min-w-0 pr-1">
-          <div class="text-2xl font-black tracking-tight leading-none text-[#2C211C]">
+          <div class="ui-heading text-xl tracking-tight leading-none text-ui-charcoal">
             {{ formatZAR(stats.currentDrawCost) }}
           </div>
-          <div class="text-[11px] font-bold text-[#6B2F1F] mt-1.5 leading-tight">
+          <div class="ui-body text-[11px] text-ui-charcoal/80 mt-1 leading-tight">
             Draw Stake
           </div>
         </div>
 
-        <!-- Segmented Donut Ring SVG (Coral / Rust from reference image) -->
+        <!-- Metric Ring -->
         <div class="w-10 h-10 shrink-0 relative flex items-center justify-center">
           <svg class="w-10 h-10 -rotate-90" viewBox="0 0 36 36">
-            <circle cx="18" cy="18" r="14" fill="none" stroke="#ECA089" stroke-width="3" stroke-dasharray="4 2" />
-            <circle cx="18" cy="18" r="14" fill="none" stroke="#C94F31" stroke-width="3.5" stroke-dasharray="35 60" stroke-linecap="round" />
+            <circle cx="18" cy="18" r="14" fill="none" stroke="white" stroke-width="3" />
+            <circle cx="18" cy="18" r="14" fill="none" stroke="#A6334D" stroke-width="3.5" stroke-dasharray="35 60" stroke-linecap="round" />
           </svg>
-          <span class="absolute text-[8px] font-black text-[#6B2F1F]">R9</span>
+          <span class="absolute text-[8px] font-black text-ui-charcoal">R9</span>
         </div>
       </div>
 
-      <!-- 2. Top Right: Mint / Sage Card (Activity Goal in reference) -->
+      <!-- 2. Top Right -->
       <div
         id="metric-lifetime-spent"
-        class="p-3.5 rounded-2xl bg-[#B7E1D2] border border-[#333333] text-[#2C211C] flex items-center justify-between transition-transform duration-150 hover:scale-[1.01]"
+        class="p-4 rounded-[24px] bg-metric-mint border border-ui-charcoal text-ui-charcoal flex items-center justify-between"
       >
         <div class="min-w-0 pr-1">
-          <div class="text-2xl font-black tracking-tight leading-none text-[#2C211C]">
+          <div class="ui-heading text-xl tracking-tight leading-none text-ui-charcoal">
             {{ formatZAR(stats.lifetimeSpent) }}
           </div>
-          <div class="text-[11px] font-bold text-[#1D4F3E] mt-1.5 leading-tight">
+          <div class="ui-body text-[11px] text-ui-charcoal/80 mt-1 leading-tight">
             Total Invested
           </div>
         </div>
 
-        <!-- Segmented Donut Ring SVG (Sage Green from reference image) -->
+        <!-- Metric Ring -->
         <div class="w-10 h-10 shrink-0 relative flex items-center justify-center">
           <svg class="w-10 h-10 -rotate-90" viewBox="0 0 36 36">
-            <circle cx="18" cy="18" r="14" fill="none" stroke="#9FD3C1" stroke-width="3" stroke-dasharray="4 2" />
+            <circle cx="18" cy="18" r="14" fill="none" stroke="white" stroke-width="3" />
             <circle cx="18" cy="18" r="14" fill="none" stroke="#256B52" stroke-width="3.5" stroke-dasharray="55 40" stroke-linecap="round" />
           </svg>
-          <span class="absolute text-[8px] font-black text-[#1D4F3E]">{{ stats.totalDrawsEvaluated }}d</span>
+          <span class="absolute text-[8px] font-black text-ui-charcoal">{{ stats.totalDrawsEvaluated }}d</span>
         </div>
       </div>
 
-      <!-- 3. Bottom Left: Soft Lavender Card (Sleep Quality in reference) -->
+      <!-- 3. Bottom Left -->
       <div
         id="metric-lifetime-won"
-        class="p-3.5 rounded-2xl bg-[#D2CFF7] border border-[#333333] text-[#2C211C] flex items-center justify-between transition-transform duration-150 hover:scale-[1.01]"
+        class="p-4 rounded-[24px] bg-metric-lavender border border-ui-charcoal text-ui-charcoal flex items-center justify-between"
       >
         <div class="min-w-0 pr-1">
-          <div class="text-2xl font-black tracking-tight leading-none text-[#2C211C]">
+          <div class="ui-heading text-xl tracking-tight leading-none text-ui-charcoal">
             {{ formatZAR(stats.lifetimeWon) }}
           </div>
-          <div class="text-[11px] font-bold text-[#3D3577] mt-1.5 leading-tight">
+          <div class="ui-body text-[11px] text-ui-charcoal/80 mt-1 leading-tight">
             Lifetime Won
           </div>
         </div>
 
-        <!-- Segmented Donut Ring SVG (Purple from reference image) -->
+        <!-- Metric Ring -->
         <div class="w-10 h-10 shrink-0 relative flex items-center justify-center">
           <svg class="w-10 h-10 -rotate-90" viewBox="0 0 36 36">
-            <circle cx="18" cy="18" r="14" fill="none" stroke="#BBB7EE" stroke-width="3" stroke-dasharray="4 2" />
+            <circle cx="18" cy="18" r="14" fill="none" stroke="white" stroke-width="3" />
             <circle cx="18" cy="18" r="14" fill="none" stroke="#52479B" stroke-width="3.5" stroke-dasharray="68 30" stroke-linecap="round" />
           </svg>
-          <span class="absolute text-[8px] font-black text-[#3D3577]">★</span>
+          <span class="absolute text-[8px] font-black text-ui-charcoal">★</span>
         </div>
       </div>
 
-      <!-- 4. Bottom Right: Soft Coral / Rose Card (Wellness Index in reference) -->
+      <!-- 4. Bottom Right -->
       <div
         id="metric-net-profit-roi"
-        class="p-3.5 rounded-2xl bg-[#F8B6B7] border border-[#333333] text-[#2C211C] flex items-center justify-between transition-transform duration-150 hover:scale-[1.01]"
+        class="p-4 rounded-[24px] bg-metric-orange border border-ui-charcoal text-ui-charcoal flex items-center justify-between"
       >
         <div class="min-w-0 pr-1">
-          <div class="text-2xl font-black tracking-tight leading-none text-[#2C211C] flex items-baseline gap-1">
+          <div class="ui-heading text-xl tracking-tight leading-none text-ui-charcoal flex items-baseline gap-1">
             <span>{{ isProfitable ? `+${stats.roiPercentage.toFixed(0)}%` : `${stats.roiPercentage.toFixed(0)}%` }}</span>
           </div>
-          <div class="text-[11px] font-bold text-[#712233] mt-1.5 leading-tight truncate">
+          <div class="ui-body text-[11px] text-ui-charcoal/80 mt-1 leading-tight truncate">
             Net Yield / ROI
           </div>
         </div>
 
-        <!-- Segmented Donut Ring SVG (Rose / Pink from reference image) -->
+        <!-- Metric Ring -->
         <div class="w-10 h-10 shrink-0 relative flex items-center justify-center">
           <svg class="w-10 h-10 -rotate-90" viewBox="0 0 36 36">
-            <circle cx="18" cy="18" r="14" fill="none" stroke="#E99FA1" stroke-width="3" stroke-dasharray="4 2" />
+            <circle cx="18" cy="18" r="14" fill="none" stroke="white" stroke-width="3" />
             <circle cx="18" cy="18" r="14" fill="none" stroke="#A6334D" stroke-width="3.5" stroke-dasharray="60 35" stroke-linecap="round" />
           </svg>
-          <TrendingUp v-if="isProfitable" class="absolute w-3.5 h-3.5 text-[#712233]" />
-          <TrendingDown v-else class="absolute w-3.5 h-3.5 text-[#712233]" />
+          <TrendingUp v-if="isProfitable" class="absolute w-4 h-4 text-ui-charcoal" />
+          <TrendingDown v-else class="absolute w-4 h-4 text-ui-charcoal" />
         </div>
       </div>
     </div>

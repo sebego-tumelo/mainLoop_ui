@@ -52,20 +52,20 @@ const togglePredictionExpand = (id) => {
 <template>
   <section
     id="section-historical-records"
-    class="w-full bg-white rounded-3xl p-4 border border-[#333333] space-y-3.5 transition-all"
+    class="w-full bg-white rounded-[24px] p-4 border border-ui-charcoal space-y-4 transition-all"
   >
-    <!-- Panel Title matching the Insights style in reference image -->
+    <!-- Panel Title -->
     <div class="flex items-center justify-between gap-2">
       <div class="flex items-center gap-2">
-        <div class="w-8 h-8 rounded-full bg-[#FFF3D9] border border-[#F6BD51]/40 flex items-center justify-center text-[#2C211C]">
-          <History class="w-4 h-4 text-[#F6BD51]" />
+        <div class="w-8 h-8 rounded-[16px] bg-metric-lavender border border-ui-charcoal flex items-center justify-center text-ui-charcoal">
+          <History class="w-4 h-4" />
         </div>
         <div>
-          <h2 class="text-xs font-black tracking-wider uppercase text-[#2C211C]">
+          <h2 class="ui-heading text-xs tracking-wider text-ui-charcoal">
             HISTORICAL LOGS
           </h2>
-          <p class="text-[10px] text-[#786C65] font-semibold">
-            SA Daily Lotto archives & prediction yield
+          <p class="ui-body text-[10px] text-ui-charcoal/70">
+            SA Daily Lotto archives
           </p>
         </div>
       </div>
@@ -73,75 +73,72 @@ const togglePredictionExpand = (id) => {
       <button
         id="btn-toggle-sort-order"
         @click="toggleSort"
-        class="flex items-center gap-1 text-[10px] font-bold px-2.5 py-1 rounded-full bg-[#FAF5EE] hover:bg-[#F4EFE6] text-[#2C211C] border border-[#E7DFD5] transition-colors cursor-pointer"
+        class="flex items-center gap-1 text-[10px] font-bold px-3 py-1 rounded-full bg-canvas-peach/50 hover:bg-canvas-peach border border-ui-charcoal transition-all cursor-pointer"
       >
-        <ArrowUpDown class="w-3 h-3 text-[#2C211C]" />
+        <ArrowUpDown class="w-3 h-3" />
         <span>{{ sortOrder === 'newest' ? 'Newest' : 'Oldest' }}</span>
       </button>
     </div>
 
     <!-- Pill Tab Switcher -->
-    <div class="flex items-center justify-between gap-1 p-1 rounded-full bg-[#FAF5EE] border border-[#EADBCC]">
+    <div class="flex items-center justify-between gap-1 p-1 rounded-[24px] bg-canvas-peach/30 border border-ui-charcoal">
       <button
         id="tab-btn-draws"
         @click="activeTab = 'draws'"
         :class="[
-          'flex-1 py-1.5 px-3 rounded-full text-xs font-black transition-all cursor-pointer text-center',
+          'flex-1 py-2 px-3 rounded-[20px] text-xs font-black transition-all cursor-pointer text-center',
           activeTab === 'draws'
-            ? 'bg-[#2C211C] text-white shadow-xs'
-            : 'text-[#786C65] hover:text-[#2C211C]'
+            ? 'bg-ui-charcoal text-white'
+            : 'text-ui-charcoal/70 hover:text-ui-charcoal'
         ]"
       >
-        Draw Archive ({{ draws.length }})
+        Draws ({{ draws.length }})
       </button>
       <button
         id="tab-btn-predictions"
         @click="activeTab = 'predictions'"
         :class="[
-          'flex-1 py-1.5 px-3 rounded-full text-xs font-black transition-all cursor-pointer text-center',
+          'flex-1 py-2 px-3 rounded-[20px] text-xs font-black transition-all cursor-pointer text-center',
           activeTab === 'predictions'
-            ? 'bg-[#2C211C] text-white shadow-xs'
-            : 'text-[#786C65] hover:text-[#2C211C]'
+            ? 'bg-ui-charcoal text-white'
+            : 'text-ui-charcoal/70 hover:text-ui-charcoal'
         ]"
       >
-        Prediction Log ({{ predictions.length }})
+        Predictions ({{ predictions.length }})
       </button>
     </div>
 
-    <!-- Content 1: Draw Archive -->
-    <div v-if="activeTab === 'draws'" id="tab-content-draws" class="space-y-2 max-h-[440px] overflow-y-auto pr-1">
+    <!-- Content: Draw Archive -->
+    <div v-if="activeTab === 'draws'" id="tab-content-draws" class="space-y-3 max-h-[440px] overflow-y-auto pr-1">
       <div
         v-for="draw in sortedDraws"
         :key="draw.id"
-        :id="`history-draw-${draw.drawNumber}`"
-        class="p-3 rounded-2xl bg-[#FAF5EE] border border-[#EADBCC] hover:border-[#D5C6B5] transition-all"
+        class="p-4 rounded-[24px] bg-canvas-peach/20 border border-ui-charcoal"
       >
-        <div class="flex items-center justify-between gap-2 mb-2">
+        <div class="flex items-center justify-between gap-2 mb-3">
           <div class="flex items-center gap-2">
-            <span class="text-xs font-black text-[#2C211C]">
+            <span class="ui-heading text-xs text-ui-charcoal">
               Draw #{{ draw.drawNumber }}
             </span>
-            <span class="text-[10px] font-semibold text-[#786C65]">
+            <span class="text-[10px] font-semibold text-ui-charcoal/70">
               {{ draw.date }}
             </span>
           </div>
 
           <div class="flex items-center gap-2">
-            <span class="text-xs font-black text-[#2C211C]">
+            <span class="ui-heading text-xs text-ui-charcoal">
               {{ formatZAR(draw.prizePool) }}
             </span>
             <button
-              :id="`btn-expand-draw-${draw.drawNumber}`"
               @click="toggleDrawExpand(draw.id)"
-              class="p-1 rounded-full bg-white hover:bg-[#FAF5EE] text-[#786C65] hover:text-[#2C211C] border border-[#E7DFD5] transition-colors cursor-pointer"
+              class="p-1.5 rounded-full bg-white hover:bg-canvas-peach border border-ui-charcoal transition-all"
             >
-              <ChevronUp v-if="expandedDrawId === draw.id" class="w-3.5 h-3.5" />
-              <ChevronDown v-else class="w-3.5 h-3.5" />
+              <ChevronUp v-if="expandedDrawId === draw.id" class="w-3 h-3" />
+              <ChevronDown v-else class="w-3 h-3" />
             </button>
           </div>
         </div>
 
-        <!-- Lottery balls in historical draw -->
         <div class="flex items-center justify-between gap-1.5 py-1">
           <LottoBall
             v-for="(num, bIdx) in draw.winningNumbers"
@@ -152,40 +149,35 @@ const togglePredictionExpand = (id) => {
           />
         </div>
 
-        <!-- Expanded Divisions View -->
         <div
           v-if="expandedDrawId === draw.id"
-          class="mt-2.5 pt-2 border-t border-[#EADBCC] text-[10px] space-y-1"
+          class="mt-3 pt-3 border-t border-ui-charcoal/20 text-[10px] space-y-1.5"
         >
-          <div class="text-[9px] uppercase text-[#786C65] font-extrabold mb-1">
-            Draw Prize Distribution:
-          </div>
           <div
             v-for="div in draw.divisions"
             :key="div.match"
-            class="flex items-center justify-between text-[#786C65] px-1"
+            class="flex items-center justify-between text-ui-charcoal px-1"
           >
-            <span>Match {{ div.match }} ({{ div.winners }} winners)</span>
-            <span class="text-[#2C211C] font-black">{{ formatZAR(div.payout) }}</span>
+            <span class="ui-body">Match {{ div.match }} ({{ div.winners }} winners)</span>
+            <span class="ui-heading">{{ formatZAR(div.payout) }}</span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Content 2: Prediction Log -->
-    <div v-else id="tab-content-predictions" class="space-y-2 max-h-[440px] overflow-y-auto pr-1">
+    <!-- Content: Prediction Log -->
+    <div v-else id="tab-content-predictions" class="space-y-3 max-h-[440px] overflow-y-auto pr-1">
       <div
         v-for="pred in sortedPredictions"
         :key="pred.id"
-        :id="`history-pred-${pred.id}`"
-        class="p-3 rounded-2xl bg-[#FAF5EE] border border-[#EADBCC] hover:border-[#D5C6B5] transition-all"
+        class="p-4 rounded-[24px] bg-canvas-peach/20 border border-ui-charcoal"
       >
-        <div class="flex items-center justify-between gap-2 mb-2">
+        <div class="flex items-center justify-between gap-2 mb-3">
           <div class="flex items-center gap-2">
-            <span class="text-xs font-black text-[#2C211C]">
+            <span class="ui-heading text-xs text-ui-charcoal">
               {{ pred.targetDrawDate }}
             </span>
-            <span class="text-[10px] font-bold text-[#786C65] bg-white px-2 py-0.5 rounded-full border border-[#E7DFD5]">
+            <span class="text-[10px] font-bold text-ui-charcoal/70 bg-white px-2 py-0.5 rounded-full border border-ui-charcoal">
               {{ pred.sets.length }} Boards
             </span>
           </div>
@@ -194,71 +186,28 @@ const togglePredictionExpand = (id) => {
             <template v-if="pred.status === 'evaluated'">
               <span
                 :class="[
-                  'text-[10px] font-black px-2 py-0.5 rounded-full border',
+                  'text-[10px] ui-heading px-2.5 py-0.5 rounded-full border border-ui-charcoal',
                   pred.netProfit >= 0
-                    ? 'bg-[#E8F5E9] text-[#2E7D32] border-[#C8E6C9]'
-                    : 'bg-[#FFEBEE] text-[#C62828] border-[#FFCDD2]'
+                    ? 'bg-metric-mint'
+                    : 'bg-metric-salmon'
                 ]"
               >
                 {{ formatSignedZAR(pred.netProfit) }}
               </span>
             </template>
             <template v-else>
-              <span class="text-[10px] font-black px-2 py-0.5 rounded-full bg-[#FFF3D9] text-[#784A0E] border border-[#F6BD51]">
-                Pending Draw
+              <span class="text-[10px] ui-heading px-2.5 py-0.5 rounded-full bg-nav-sand border border-ui-charcoal">
+                Pending
               </span>
             </template>
-
-            <button
-              :id="`btn-expand-pred-${pred.id}`"
-              @click="togglePredictionExpand(pred.id)"
-              class="p-1 rounded-full bg-white hover:bg-[#FAF5EE] text-[#786C65] hover:text-[#2C211C] border border-[#E7DFD5] transition-colors cursor-pointer"
-            >
-              <ChevronUp v-if="expandedPredictionId === pred.id" class="w-3.5 h-3.5" />
-              <ChevronDown v-else class="w-3.5 h-3.5" />
-            </button>
           </div>
         </div>
 
-        <div class="flex items-center justify-between text-[10px] text-[#786C65] font-semibold">
-          <span>
-            Cost: <strong class="text-[#2C211C]">{{ formatZAR(pred.cost) }}</strong> | Won:
-            <strong class="text-[#2C211C]">{{ formatZAR(pred.totalWon) }}</strong>
+        <div class="flex items-center justify-between text-[10px] text-ui-charcoal/80 font-bold">
+          <span>Cost: {{ formatZAR(pred.cost) }} | Won: {{ formatZAR(pred.totalWon) }}</span>
+          <span class="ui-heading text-ui-charcoal">
+            {{ pred.topMatchCount > 0 ? `Best: ${pred.topMatchCount}m` : '0m' }}
           </span>
-          <span class="text-[#2C211C] font-black">
-            {{ pred.topMatchCount > 0 ? `Best: Match ${pred.topMatchCount}` : '0 Matches' }}
-          </span>
-        </div>
-
-        <!-- Expanded Sets List -->
-        <div
-          v-if="expandedPredictionId === pred.id"
-          class="mt-2.5 pt-2 border-t border-[#EADBCC] space-y-2"
-        >
-          <div
-            v-for="(set, sIdx) in pred.sets"
-            :key="set.id"
-            class="p-2 rounded-xl bg-white border border-[#EADBCC]"
-          >
-            <div class="flex items-center justify-between text-[10px]">
-              <span class="font-black text-[#2C211C]">Set #{{ set.setNumber || sIdx + 1 }}</span>
-              <span class="text-[#2E7D32] font-black">
-                {{ (set.matchedNumbers?.length || 0) > 0
-                  ? `${set.matchedNumbers.length} Matched (${formatZAR(set.winAmount || 0)})`
-                  : '0 Matches' }}
-              </span>
-            </div>
-            <div class="flex items-center justify-between gap-1 mt-1.5">
-              <LottoBall
-                v-for="num in set.numbers"
-                :key="`hist-set-ball-${sIdx}-${num}`"
-                :number="num"
-                size="sm"
-                :isMatched="set.matchedNumbers?.includes(num)"
-                :variant="set.matchedNumbers?.includes(num) ? 'gold' : 'default'"
-              />
-            </div>
-          </div>
         </div>
       </div>
     </div>

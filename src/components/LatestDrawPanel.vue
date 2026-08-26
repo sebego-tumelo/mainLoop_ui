@@ -21,7 +21,7 @@ const isDropdownOpen = ref(false);
 <template>
   <section
     id="section-latest-draw"
-    class="w-full bg-white rounded-3xl p-4 border border-[#E7DFD5] shadow-xs space-y-3.5 transition-all"
+    class="w-full bg-white rounded-3xl p-4 border border-[#333333] space-y-3.5 transition-all"
   >
     <!-- Top Header mimicking the Insights section from reference image -->
     <div class="flex items-center justify-between gap-2">

@@ -31,7 +31,7 @@ const weekDays = [
 </script>
 
 <template>
-  <header class="w-full bg-[#F6BD51] text-[#2C211C] pt-2.5 pb-4 px-4 rounded-b-[32px] shadow-sm relative z-20">
+  <header class="w-full bg-[#F6BD51] text-[#2C211C] pt-2.5 pb-4 px-4 rounded-b-[32px] border-b border-[#333333] relative z-20">
     <!-- Top status line mock from reference image: 9:41 ... icons -->
     <div class="flex items-center justify-between text-[11px] font-semibold text-[#2C211C]/80 px-1 mb-2">
       <span class="font-bold tracking-tight">9:41</span>

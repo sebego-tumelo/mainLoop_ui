@@ -27,7 +27,7 @@ const isProfitable = computed(() => props.stats.netProfit >= 0);
       <!-- 1. Top Left: Soft Peach Card (Needs Satisfaction in reference) -->
       <div
         id="metric-current-cost"
-        class="p-3.5 rounded-2xl bg-[#FFB59E] border border-[#F0A48C] text-[#2C211C] flex items-center justify-between shadow-xs transition-transform duration-150 hover:scale-[1.01]"
+        class="p-3.5 rounded-2xl bg-[#FFB59E] border border-[#333333] text-[#2C211C] flex items-center justify-between transition-transform duration-150 hover:scale-[1.01]"
       >
         <div class="min-w-0 pr-1">
           <div class="text-2xl font-black tracking-tight leading-none text-[#2C211C]">
@@ -51,7 +51,7 @@ const isProfitable = computed(() => props.stats.netProfit >= 0);
       <!-- 2. Top Right: Mint / Sage Card (Activity Goal in reference) -->
       <div
         id="metric-lifetime-spent"
-        class="p-3.5 rounded-2xl bg-[#B7E1D2] border border-[#9FD3C1] text-[#2C211C] flex items-center justify-between shadow-xs transition-transform duration-150 hover:scale-[1.01]"
+        class="p-3.5 rounded-2xl bg-[#B7E1D2] border border-[#333333] text-[#2C211C] flex items-center justify-between transition-transform duration-150 hover:scale-[1.01]"
       >
         <div class="min-w-0 pr-1">
           <div class="text-2xl font-black tracking-tight leading-none text-[#2C211C]">
@@ -75,7 +75,7 @@ const isProfitable = computed(() => props.stats.netProfit >= 0);
       <!-- 3. Bottom Left: Soft Lavender Card (Sleep Quality in reference) -->
       <div
         id="metric-lifetime-won"
-        class="p-3.5 rounded-2xl bg-[#D2CFF7] border border-[#BBB7EE] text-[#2C211C] flex items-center justify-between shadow-xs transition-transform duration-150 hover:scale-[1.01]"
+        class="p-3.5 rounded-2xl bg-[#D2CFF7] border border-[#333333] text-[#2C211C] flex items-center justify-between transition-transform duration-150 hover:scale-[1.01]"
       >
         <div class="min-w-0 pr-1">
           <div class="text-2xl font-black tracking-tight leading-none text-[#2C211C]">
@@ -99,7 +99,7 @@ const isProfitable = computed(() => props.stats.netProfit >= 0);
       <!-- 4. Bottom Right: Soft Coral / Rose Card (Wellness Index in reference) -->
       <div
         id="metric-net-profit-roi"
-        class="p-3.5 rounded-2xl bg-[#F8B6B7] border border-[#E99FA1] text-[#2C211C] flex items-center justify-between shadow-xs transition-transform duration-150 hover:scale-[1.01]"
+        class="p-3.5 rounded-2xl bg-[#F8B6B7] border border-[#333333] text-[#2C211C] flex items-center justify-between transition-transform duration-150 hover:scale-[1.01]"
       >
         <div class="min-w-0 pr-1">
           <div class="text-2xl font-black tracking-tight leading-none text-[#2C211C] flex items-baseline gap-1">

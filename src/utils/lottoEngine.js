@@ -1,10 +1,8 @@
-import { DrawResult, PredictionRecord, PredictionSet, FinancialSummary, PrizeDivision } from '../types';
-
 export const BOARD_PRICE_ZAR = 3; // R3 per board
 export const DEFAULT_BOARD_COUNT = 3; // R9 per draw
 
 // Standard Daily Lotto payouts estimate table
-export function calculatePrizeForMatches(matchCount: number, prizePool: number = 450000): number {
+export function calculatePrizeForMatches(matchCount, prizePool = 450000) {
   switch (matchCount) {
     case 5:
       return Math.round(prizePool * 0.356); // approx R160,000 - R400,000
@@ -20,7 +18,7 @@ export function calculatePrizeForMatches(matchCount: number, prizePool: number =
 }
 
 // Generate default prize divisions for a draw
-export function generateDivisions(winningNumbers: number[], prizePool: number = 450000): PrizeDivision[] {
+export function generateDivisions(winningNumbers, prizePool = 450000) {
   return [
     { match: 5, label: 'Match 5 (Div 1)', winners: 1, payout: Math.round(prizePool * 0.356), percentage: '35.6%' },
     { match: 4, label: 'Match 4 (Div 2)', winners: 184, payout: 420, percentage: '33.7%' },
@@ -30,14 +28,10 @@ export function generateDivisions(winningNumbers: number[], prizePool: number = 
 }
 
 // Generate random unique 5 numbers from 1 to 36
-export function generateCandidateSet(setNumber: number, strategy: string = 'balanced'): PredictionSet {
-  const numbers: number[] = [];
-  
-  // Frequency weighting simulation
-  // 1 to 36
+export function generateCandidateSet(setNumber, strategy = 'balanced') {
+  const numbers = [];
   const pool = Array.from({ length: 36 }, (_, i) => i + 1);
   
-  // Apply a smart distribution (hot numbers, cold numbers, sum ranges between 60 and 125)
   while (numbers.length < 5) {
     const randomIndex = Math.floor(Math.random() * pool.length);
     const selected = pool.splice(randomIndex, 1)[0];
@@ -45,8 +39,6 @@ export function generateCandidateSet(setNumber: number, strategy: string = 'bala
   }
 
   numbers.sort((a, b) => a - b);
-
-  // Calculate algorithmic confidence score between 88% and 97%
   const confidenceScore = Math.floor(88 + Math.random() * 9.5);
 
   return {
@@ -58,16 +50,12 @@ export function generateCandidateSet(setNumber: number, strategy: string = 'bala
 }
 
 // Generate multiple sets
-export function generatePredictionBoards(count: number = 3): PredictionSet[] {
+export function generatePredictionBoards(count = 3) {
   return Array.from({ length: count }, (_, i) => generateCandidateSet(i + 1));
 }
 
 // Evaluate prediction sets against winning numbers
-export function evaluatePredictionSets(sets: PredictionSet[], winningNumbers: number[]): {
-  evaluatedSets: PredictionSet[];
-  totalWon: number;
-  topMatch: number;
-} {
+export function evaluatePredictionSets(sets, winningNumbers) {
   let totalWon = 0;
   let topMatch = 0;
 
@@ -96,10 +84,7 @@ export function evaluatePredictionSets(sets: PredictionSet[], winningNumbers: nu
 }
 
 // Compute financial statistics from predictions
-export function computeFinancialStats(
-  predictions: PredictionRecord[],
-  currentActivePrediction: PredictionRecord | null
-): FinancialSummary {
+export function computeFinancialStats(predictions, currentActivePrediction) {
   const evaluated = predictions.filter((p) => p.status === 'evaluated');
   
   const currentDrawCost = currentActivePrediction 
@@ -131,7 +116,7 @@ export function computeFinancialStats(
 }
 
 // Format ZAR currency
-export function formatZAR(amount: number): string {
+export function formatZAR(amount) {
   const formatted = Math.abs(amount).toLocaleString('en-ZA', {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
@@ -140,7 +125,7 @@ export function formatZAR(amount: number): string {
 }
 
 // Format sign prefixed ZAR
-export function formatSignedZAR(amount: number): string {
+export function formatSignedZAR(amount) {
   const formatted = Math.abs(amount).toLocaleString('en-ZA', {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,

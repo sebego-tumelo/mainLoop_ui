@@ -1,7 +1,6 @@
-import { DrawResult, PredictionRecord } from '../types';
-import { generateDivisions } from '../utils/lottoEngine';
+import { generateDivisions } from '../utils/lottoEngine.js';
 
-export const INITIAL_DRAWS: DrawResult[] = [
+export const INITIAL_DRAWS = [
   {
     id: 'draw-2026-08-25',
     drawNumber: 1984,
@@ -77,7 +76,7 @@ export const INITIAL_DRAWS: DrawResult[] = [
 ];
 
 // Initial active prediction for the upcoming draw
-export const INITIAL_ACTIVE_PREDICTION: PredictionRecord = {
+export const INITIAL_ACTIVE_PREDICTION = {
   id: 'pred-active-2026-08-26',
   createdAt: '2026-08-26T01:30:00Z',
   targetDrawDate: '2026-08-26',
@@ -110,7 +109,7 @@ export const INITIAL_ACTIVE_PREDICTION: PredictionRecord = {
 };
 
 // Initial history of predictions with realistic payouts matching ledger metrics
-export const INITIAL_PREDICTION_HISTORY: PredictionRecord[] = [
+export const INITIAL_PREDICTION_HISTORY = [
   {
     id: 'pred-hist-2026-08-25',
     createdAt: '2026-08-25T14:00:00Z',

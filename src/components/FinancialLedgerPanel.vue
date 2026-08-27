@@ -123,31 +123,7 @@ const isProfitable = computed(() => props.stats.netProfit >= 0);
     </div>
 
     <!-- Category Filter Chips (Matches the 3 pills below cards in the reference image: Meowing, Licking, Scratching) -->
-    <div class="flex items-center justify-around px-2 py-1 text-xs font-bold text-[#6B5A51]">
-      <button
-        @click="onOpenPrizeInfoModal"
-        class="flex items-center gap-1.5 hover:text-[#2C211C] transition-colors py-1 cursor-pointer"
-      >
-        <span class="w-2 h-2 rounded-full border-2 border-[#E0694B]"></span>
-        <span>Hot Matrix</span>
-      </button>
-
-      <button
-        @click="onOpenPrizeInfoModal"
-        class="flex items-center gap-1.5 hover:text-[#2C211C] transition-colors py-1 cursor-pointer"
-      >
-        <span class="w-2 h-2 rounded-full border-2 border-[#3E7761]"></span>
-        <span>Rolldown Rules</span>
-      </button>
-
-      <button
-        @click="onOpenPrizeInfoModal"
-        class="flex items-center gap-1.5 hover:text-[#2C211C] transition-colors py-1 cursor-pointer"
-      >
-        <span class="w-2 h-2 rounded-full border-2 border-[#5F56A4]"></span>
-        <span>3-Board Synergy</span>
-      </button>
-    </div>
+    
   </section>
 </template>
 

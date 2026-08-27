@@ -32,7 +32,7 @@ const currentDay = ref(date.toLocaleDateString('en-US', { weekday: 'long' }).toU
 </script>
 
 <template>
-  <header class="w-full bg-nav-sand text-ui-charcoal pt-2.5 pb-4 px-4 rounded-b-[24px] border-b border-ui-charcoal relative z-20">
+  <header id="section-home" class="w-full bg-nav-sand text-ui-charcoal pt-2.5 pb-4 px-4 rounded-b-[24px] border-b border-ui-charcoal relative z-20">
     <!-- Empty placeholder to maintain status bar vertical space -->
     <div class="h-[16px] mb-2"></div>
 

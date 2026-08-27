@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue';
-import { Sparkles, Zap, CheckCircle2, Clock, RotateCcw, Activity } from 'lucide-vue-next';
+import { Zap, CheckCircle2, Clock, RotateCcw, Activity } from 'lucide-vue-next';
 import LottoBall from './LottoBall.vue';
 import { formatZAR, formatSignedZAR } from '../utils/lottoEngine';
 
@@ -33,13 +33,16 @@ const predictionCount = computed(() => props.currentPrediction?.sets?.length || 
     <!-- Header matching the Journal screen top from reference image -->
     <div class="flex items-center justify-between gap-2">
       <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-[16px] bg-canvas-peach border border-ui-charcoal flex items-center justify-center text-ui-charcoal">
+          <Zap class="w-4 h-4" />
+        </div>
         <div>
-          <div class="flex items-center gap-1.5">
-            <span class="ui-heading text-xl tracking-tight text-ui-charcoal">{{ predictionCount }}</span>
-            <span class="text-[10px] font-extrabold tracking-wider uppercase text-ui-charcoal/70">
-              PREDICTIONS
-            </span>
-          </div>
+          <h2 class="ui-heading text-xs tracking-wider text-ui-charcoal">
+            AI PREDICTIONS
+          </h2>
+          <p class="ui-body text-[10px] text-ui-charcoal/70">
+            {{ predictionCount }} predictions
+          </p>
         </div>
       </div>
 

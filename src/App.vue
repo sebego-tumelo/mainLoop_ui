@@ -156,7 +156,7 @@ const scrollToSection = (id, sectionName) => {
           <!-- 1. Home / Results -->
           <button
             id="nav-btn-home"
-            @click="scrollToSection('section-latest-draw', 'home')"
+            @click="scrollToSection('section-home', 'home')"
             title="Home"
             :class="[
               'p-2 rounded-full transition-all cursor-pointer',

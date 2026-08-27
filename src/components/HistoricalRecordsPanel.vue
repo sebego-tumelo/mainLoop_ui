@@ -44,6 +44,10 @@ const toggleDrawExpand = (id) => {
   expandedDrawId.value = expandedDrawId.value === id ? null : id;
 };
 
+const togglePredictionExpand = (id) => {
+  expandedPredictionId.value = expandedPredictionId.value === id ? null : id;
+};
+
 // Color mapping based on decade
 const getDecadeVariant = (num) => {
   if (num <= 9) return 'peach';

@@ -140,9 +140,7 @@ const predictionCount = computed(() => props.currentPrediction?.sets?.length || 
         >
           <Zap class="w-4 h-4 text-ui-charcoal" />
           <span>Generate New Prediction</span>
-          <span class="text-[10px] bg-white px-2 py-0.5 rounded-full border border-ui-charcoal font-bold ml-1 text-ui-charcoal">
-            3 Boards • R9
-          </span>
+          
         </button>
       </div>
     </div>

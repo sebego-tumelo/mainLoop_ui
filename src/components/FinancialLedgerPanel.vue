@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue';
-import { Info, Sparkles, TrendingUp, TrendingDown } from 'lucide-vue-next';
+import { Info, Sparkles, TrendingUp, TrendingDown, Coins } from 'lucide-vue-next';
 import { formatZAR, formatSignedZAR } from '../utils/lottoEngine';
 
 const props = defineProps({
@@ -20,8 +20,25 @@ const isProfitable = computed(() => props.stats.netProfit >= 0);
 <template>
   <section
     id="section-financial-ledger"
-    class="w-full space-y-2.5 transition-all"
+    class="w-full bg-white rounded-[24px] p-4 border border-ui-charcoal space-y-4 transition-all"
   >
+    <!-- Panel Title -->
+    <div class="flex items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-[16px] bg-metric-orange border border-ui-charcoal flex items-center justify-center text-ui-charcoal">
+          <Coins class="w-4 h-4" />
+        </div>
+        <div>
+          <h2 class="ui-heading text-xs tracking-wider text-ui-charcoal">
+            FINANCIAL LEDGER
+          </h2>
+          <p class="ui-body text-[10px] text-ui-charcoal/70">
+            Investment performance
+          </p>
+        </div>
+      </div>
+    </div>
+
     <!-- 4-Quadrant Pastel Grid (Direct 1:1 match to the reference image) -->
     <div class="grid grid-cols-2 gap-2.5">
       <!-- 1. Top Left -->

@@ -26,9 +26,7 @@ const isDropdownOpen = ref(false);
     <!-- Top Header mimicking the Insights section from reference image -->
     <div class="flex items-center justify-between gap-2">
       <div class="flex items-center gap-2">
-        <div class="w-8 h-8 rounded-[16px] bg-metric-mint border border-ui-charcoal flex items-center justify-center text-ui-charcoal">
-          <Award class="w-4 h-4" />
-        </div>
+        
         <div>
           <h2 class="ui-heading text-xs tracking-wider text-ui-charcoal">
             OFFICIAL DRAW #{{ draw.drawNumber }}

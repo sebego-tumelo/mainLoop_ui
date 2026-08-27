@@ -138,51 +138,7 @@ const averageConfidence = computed(() => {
       </div>
 
       <!-- Algorithmic Gauges -->
-      <div class="space-y-3 pt-2">
-        <!-- 1. Frequency Distribution Gauge -->
-        <div class="p-3 rounded-[24px] bg-white border border-ui-charcoal space-y-2">
-          <div class="flex items-center justify-between text-xs font-bold text-ui-charcoal">
-            <div class="flex items-center gap-1.5">
-              <span>🍗</span>
-              <span>Hot Decade Dispersion</span>
-            </div>
-            <span class="text-[11px] font-mono text-ui-charcoal/70">Optimal △</span>
-          </div>
-          <!-- Gauge Slider Bar -->
-          <div class="relative pt-1 pb-1">
-            <div class="h-2 bg-canvas-peach/50 rounded-full overflow-hidden flex border border-ui-charcoal">
-              <div class="w-1/3 border-r border-ui-charcoal/20"></div>
-              <div class="w-1/3 bg-metric-mint border-r border-ui-charcoal/20"></div>
-              <div class="w-1/3"></div>
-            </div>
-            <!-- Pointer Triangle ▼ -->
-            <div class="text-center -mt-4 ml-[55%] text-[10px] text-ui-charcoal leading-none">
-              ▼
-            </div>
-          </div>
-        </div>
-
-        <!-- 2. Odd/Even Parity Gauge -->
-        <div class="p-3 rounded-[24px] bg-white border border-ui-charcoal space-y-2">
-          <div class="flex items-center justify-between text-xs font-bold text-ui-charcoal">
-            <div class="flex items-center gap-1.5">
-              <span>🥚</span>
-              <span>Odd / Even Parity Ratio (3:2)</span>
-            </div>
-            <span class="text-[11px] font-mono text-ui-charcoal/70">92% Match ▽</span>
-          </div>
-          <div class="relative pt-1 pb-1">
-            <div class="h-2 bg-canvas-peach/50 rounded-full overflow-hidden flex border border-ui-charcoal">
-              <div class="w-1/3 border-r border-ui-charcoal/20"></div>
-              <div class="w-1/3 bg-metric-salmon border-r border-ui-charcoal/20"></div>
-              <div class="w-1/3"></div>
-            </div>
-            <div class="text-center -mt-4 ml-[48%] text-[10px] text-ui-charcoal leading-none">
-              ▼
-            </div>
-          </div>
-        </div>
-      </div>
+      
 
       <!-- Action Button matching the warm golden butterscotch style -->
       <div class="pt-2">

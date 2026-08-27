@@ -88,6 +88,8 @@ const scrollToSection = (id, sectionName) => {
     <div class="relative z-10 w-full max-w-md mx-auto flex flex-col min-h-screen">
       <!-- App Header -->
       <Header
+        :draw="latestDraw"
+        :matchedNumbers="latestMatchedNumbers"
         :onOpenPredictModal="() => (isPredictModalOpen = true)"
         :onOpenSimulateModal="() => (isSimulateModalOpen = true)"
         :onOpenPrizeInfoModal="() => (isPrizeInfoModalOpen = true)"

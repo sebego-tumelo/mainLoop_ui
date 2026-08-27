@@ -97,24 +97,27 @@ const scrollToSection = (id, sectionName) => {
 
       <!-- Main Body Flowing Content -->
       <main class="flex-1 px-4 py-4 space-y-4">
+
+          <!-- 2. Current Prediction Card with Goal progress bar & Tripartite sliders -->
+        <CurrentPredictionPanel
+          :currentPrediction="currentActivePrediction"
+          :latestWinningNumbers="latestDraw.winningNumbers"
+          :onOpenPredictModal="() => (isPredictModalOpen = true)"
+        />
+        
         <!-- 1. Financial Ledger 4-Quadrant Pastel Grid (Needs Satisfaction, Activity, Sleep, Wellness from image) -->
         <FinancialLedgerPanel
           :stats="financialStats"
           :onOpenPrizeInfoModal="() => (isPrizeInfoModalOpen = true)"
         />
 
-        <!-- 2. Current Prediction Card with Goal progress bar & Tripartite sliders -->
-        <CurrentPredictionPanel
-          :currentPrediction="currentActivePrediction"
-          :latestWinningNumbers="latestDraw.winningNumbers"
-          :onOpenPredictModal="() => (isPredictModalOpen = true)"
-        />
+      
 
         <!-- 3. Latest Official Draw Results Banner -->
-        <LatestDrawPanel
+        <!-- <LatestDrawPanel
           :draw="latestDraw"
           :matchedNumbers="latestMatchedNumbers"
-        />
+        /> -->
 
         <!-- 4. Historical Records & Prediction Performance Log -->
         <HistoricalRecordsPanel

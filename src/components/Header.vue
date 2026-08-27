@@ -19,6 +19,10 @@ defineProps({
 
 const selectedDayIndex = ref(3); // Default to Thursday 18th like in reference image
 
+const date = new Date();
+const currentDate = ref(date.getDate());
+const currentDay = ref(date.toLocaleDateString('en-US', { weekday: 'long' }).toUpperCase());
+
 const weekDays = [
   { day: 'MON', date: '15' },
   { day: 'TUE', date: '16' },
@@ -39,11 +43,11 @@ const weekDays = [
     <div class="flex items-center justify-between gap-2 max-w-lg mx-auto mb-3">
       <div class="flex items-center gap-2">
         <div class="w-8 h-8 rounded-full bg-ui-charcoal text-nav-sand flex items-center justify-center font-black text-sm">
-          27
+          {{ currentDate }}
         </div>
         <div>
           <h1 class="ui-heading text-lg tracking-wider text-ui-charcoal">
-            THURSDAY
+            {{ currentDay }}
           </h1>
         </div>
       </div>

@@ -44,8 +44,12 @@ const toggleDrawExpand = (id) => {
   expandedDrawId.value = expandedDrawId.value === id ? null : id;
 };
 
-const togglePredictionExpand = (id) => {
-  expandedPredictionId.value = expandedPredictionId.value === id ? null : id;
+// Color mapping based on decade
+const getDecadeVariant = (num) => {
+  if (num <= 9) return 'peach';
+  if (num <= 19) return 'mint';
+  if (num <= 29) return 'lavender';
+  return 'rose';
 };
 </script>
 
@@ -145,7 +149,7 @@ const togglePredictionExpand = (id) => {
             :key="`hist-draw-${draw.id}-${num}`"
             :number="num"
             size="sm"
-            :variant="bIdx % 2 === 0 ? 'gold' : 'peach'"
+            :variant="getDecadeVariant(num)"
           />
         </div>
 
@@ -244,7 +248,7 @@ const togglePredictionExpand = (id) => {
                 :number="num"
                 size="sm"
                 :isMatched="set.matchedNumbers?.includes(num)"
-                :variant="set.matchedNumbers?.includes(num) ? 'gold' : 'default'"
+                :variant="set.matchedNumbers?.includes(num) ? 'gold' : getDecadeVariant(num)"
               />
             </div>
           </div>

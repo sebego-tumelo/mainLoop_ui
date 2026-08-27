@@ -21,12 +21,8 @@ const props = defineProps({
 
 const isEvaluated = computed(() => props.currentPrediction?.status === 'evaluated');
 
-// Average confidence score
-const averageConfidence = computed(() => {
-  if (!props.currentPrediction?.sets?.length) return 78;
-  const sum = props.currentPrediction.sets.reduce((acc, s) => acc + (s.confidenceScore || 75), 0);
-  return Math.round(sum / props.currentPrediction.sets.length);
-});
+// Prediction count
+const predictionCount = computed(() => props.currentPrediction?.sets?.length || 0);
 </script>
 
 <template>
@@ -39,9 +35,9 @@ const averageConfidence = computed(() => {
       <div class="flex items-center gap-2">
         <div>
           <div class="flex items-center gap-1.5">
-            <span class="ui-heading text-xl tracking-tight text-ui-charcoal">{{ averageConfidence }}%</span>
+            <span class="ui-heading text-xl tracking-tight text-ui-charcoal">{{ predictionCount }}</span>
             <span class="text-[10px] font-extrabold tracking-wider uppercase text-ui-charcoal/70">
-              AI CONFIDENCE MATRIX
+              PREDICTIONS
             </span>
           </div>
         </div>

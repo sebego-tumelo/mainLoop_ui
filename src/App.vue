@@ -119,26 +119,20 @@ const scrollToSection = (id, sectionName) => {
       <!-- Main Body Flowing Content -->
       <main class="flex-1 px-4 py-4 space-y-4">
 
-          <!-- 2. Current Prediction Card with Goal progress bar & Tripartite sliders -->
+        <!-- 3. Latest Official Draw Results Banner -->
+        <LatestDrawPanel
+          id="section-latest-draw"
+          :draw="latestDraw"
+          :matchedNumbers="latestMatchedNumbers"
+        />
+
+        <!-- 2. Current Prediction Card with Goal progress bar & Tripartite sliders -->
         <CurrentPredictionPanel
+          id="section-current-prediction"
           :currentPrediction="currentActivePrediction"
           :latestWinningNumbers="latestDraw.winningNumbers"
           :onOpenPredictModal="() => (isPredictModalOpen = true)"
         />
-        
-        <!-- 1. Financial Ledger 4-Quadrant Pastel Grid (Needs Satisfaction, Activity, Sleep, Wellness from image) -->
-        <FinancialLedgerPanel
-          :stats="financialStats"
-          :onOpenPrizeInfoModal="() => (isPrizeInfoModalOpen = true)"
-        />
-
-      
-
-        <!-- 3. Latest Official Draw Results Banner -->
-        <!-- <LatestDrawPanel
-          :draw="latestDraw"
-          :matchedNumbers="latestMatchedNumbers"
-        /> -->
 
         <!-- 4. Historical Records & Prediction Performance Log -->
         <HistoricalRecordsPanel
@@ -156,7 +150,7 @@ const scrollToSection = (id, sectionName) => {
           <!-- 1. Home / Results -->
           <button
             id="nav-btn-home"
-            @click="scrollToSection('section-current-prediction', 'home')"
+            @click="scrollToSection('section-latest-draw', 'home')"
             title="Home"
             :class="[
               'p-2 rounded-full transition-all cursor-pointer',

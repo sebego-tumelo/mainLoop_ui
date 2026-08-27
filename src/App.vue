@@ -56,8 +56,29 @@ const latestMatchedNumbers = computed(() => {
 
 // Event Handlers
 const handleSavePrediction = (newPrediction) => {
-  currentActivePrediction.value = newPrediction;
-  predictions.value = [newPrediction, ...predictions.value.filter((p) => p.id !== newPrediction.id)];
+  if (currentActivePrediction.value && currentActivePrediction.value.status === 'pending') {
+    // Appending to existing active prediction
+    const existingSets = currentActivePrediction.value.sets;
+    const newSets = newPrediction.sets.map((set, i) => ({
+      ...set,
+      setNumber: existingSets.length + i + 1,
+    }));
+
+    currentActivePrediction.value.sets = [...existingSets, ...newSets];
+
+    currentActivePrediction.value.boardsCount += newPrediction.boardsCount;
+    currentActivePrediction.value.cost += newPrediction.cost;
+    currentActivePrediction.value.netProfit = -currentActivePrediction.value.cost;
+
+    // Update predictions list
+    predictions.value = predictions.value.map((p) =>
+      p.id === currentActivePrediction.value.id ? currentActivePrediction.value : p
+    );
+  } else {
+    // New prediction
+    currentActivePrediction.value = newPrediction;
+    predictions.value = [newPrediction, ...predictions.value];
+  }
 };
 
 const handleSimulateAndApplyDraw = (newDraw, evaluatedPrediction) => {

@@ -58,16 +58,7 @@ const averageConfidence = computed(() => {
     </div>
 
     <!-- Wide Pill Progress Bar -->
-    <div class="w-full bg-canvas-peach/50 rounded-full h-7 p-1 border border-ui-charcoal flex items-center">
-      <div
-        class="bg-metric-orange h-full rounded-full transition-all duration-500 flex items-center justify-end px-2"
-        :style="{ width: `${Math.max(25, averageConfidence)}%` }"
-      >
-        <span class="text-[9px] font-black text-ui-charcoal tracking-tighter font-mono">
-          {{ averageConfidence }}% SATISFACTION
-        </span>
-      </div>
-    </div>
+   
 
     <!-- Prediction Boards List -->
     <div v-if="currentPrediction" class="space-y-3">

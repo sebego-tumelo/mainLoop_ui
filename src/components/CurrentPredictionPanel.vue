@@ -21,6 +21,14 @@ const props = defineProps({
 
 const isEvaluated = computed(() => props.currentPrediction?.status === 'evaluated');
 
+// Color mapping based on decade
+const getDecadeVariant = (num) => {
+  if (num <= 9) return 'peach';
+  if (num <= 19) return 'mint';
+  if (num <= 29) return 'lavender';
+  return 'rose';
+};
+
 // Prediction count
 const predictionCount = computed(() => props.currentPrediction?.sets?.length || 0);
 </script>
@@ -110,19 +118,7 @@ const predictionCount = computed(() => props.currentPrediction?.sets?.length || 
               :number="num"
               size="md"
               :isMatched="set.matchedNumbers?.includes(num)"
-              :variant="
-                set.matchedNumbers?.includes(num)
-                  ? 'gold'
-                  : bIdx === 0
-                  ? 'peach'
-                  : bIdx === 1
-                  ? 'mint'
-                  : bIdx === 2
-                  ? 'lavender'
-                  : bIdx === 3
-                  ? 'rose'
-                  : 'default'
-              "
+              :variant="set.matchedNumbers?.includes(num) ? 'gold' : getDecadeVariant(num)"
             />
           </div>
         </div>

@@ -104,7 +104,7 @@ const scrollToSection = (id, sectionName) => {
 </script>
 
 <template>
-  <div class="min-h-screen text-ui-charcoal font-sans flex flex-col items-center selection:bg-metric-orange selection:text-ui-charcoal pb-28">
+  <div class="min-h-screen text-ui-charcoal font-sans flex flex-col items-center selection:bg-metric-orange selection:text-ui-charcoal pb-16">
     <!-- Main Container Formatted to Mobile Frame Width -->
     <div class="relative z-10 w-full max-w-md mx-auto flex flex-col min-h-screen">
       <!-- App Header -->

@@ -32,16 +32,8 @@ const weekDays = [
 
 <template>
   <header class="w-full bg-nav-sand text-ui-charcoal pt-2.5 pb-4 px-4 rounded-b-[24px] border-b border-ui-charcoal relative z-20">
-    <!-- Top status line mock from reference image: 9:41 ... icons -->
-    <div class="flex items-center justify-between text-[11px] font-semibold text-ui-charcoal/80 px-1 mb-2">
-      <span class="font-bold tracking-tight">9:41</span>
-      <div class="flex items-center gap-1.5">
-        <span class="text-[10px] font-bold">5G</span>
-        <div class="w-4 h-2 rounded-sm border border-ui-charcoal/80 p-[1px] flex items-center">
-          <div class="h-full w-3 bg-ui-charcoal rounded-[0.5px]"></div>
-        </div>
-      </div>
-    </div>
+    <!-- Empty placeholder to maintain status bar vertical space -->
+    <div class="h-[16px] mb-2"></div>
 
     <!-- Main Title Header -->
     <div class="flex items-center justify-between gap-2 max-w-lg mx-auto mb-3">

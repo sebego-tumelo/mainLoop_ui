@@ -147,39 +147,16 @@ const scrollToSection = (id, sectionName) => {
         />
       </main>
 
-      <!-- Floating Bottom Navigation Pill Bar (Exact match to the golden pill in the reference image) -->
+      <!-- Floating Bottom Navigation Pill Bar -->
       <div class="fixed bottom-4 left-0 right-0 z-40 px-6 pointer-events-none">
         <nav
           id="mobile-bottom-nav"
           class="max-w-xs sm:max-w-sm mx-auto bg-nav-sand text-ui-charcoal rounded-[24px] py-2.5 px-5 border border-ui-charcoal flex items-center justify-between pointer-events-auto transition-transform duration-200 hover:scale-[1.02]"
         >
-          <!-- 1. Location / Results -->
-          <button
-            id="nav-btn-result"
-            @click="scrollToSection('section-latest-draw', 'result')"
-            title="Results"
-            :class="[
-              'p-2 rounded-full transition-all cursor-pointer',
-              activeSection === 'result' ? 'bg-ui-charcoal text-white' : 'text-ui-charcoal hover:bg-ui-charcoal/10'
-            ]"
-          >
-            <MapPin class="w-4 h-4" />
-          </button>
-
-          <!-- 2. AI Predict -->
-          <button
-            id="nav-btn-predict"
-            @click="isPredictModalOpen = true"
-            title="AI Predict"
-            class="p-2 rounded-full text-ui-charcoal hover:bg-ui-charcoal/10 transition-all cursor-pointer"
-          >
-            <Sparkles class="w-4 h-4" />
-          </button>
-
-          <!-- 3. Home / Center -->
+          <!-- 1. Home / Results -->
           <button
             id="nav-btn-home"
-            @click="scrollToSection('section-current-prediction', 'home')"
+            @click="scrollToSection('section-latest-draw', 'home')"
             title="Home"
             :class="[
               'p-2 rounded-full transition-all cursor-pointer',
@@ -189,7 +166,20 @@ const scrollToSection = (id, sectionName) => {
             <Home class="w-4 h-4" />
           </button>
 
-          <!-- 4. Ledger -->
+          <!-- 2. Prediction -->
+          <button
+            id="nav-btn-predict-scroll"
+            @click="scrollToSection('section-current-prediction', 'prediction')"
+            title="Prediction"
+            :class="[
+              'p-2 rounded-full transition-all cursor-pointer',
+              activeSection === 'prediction' ? 'bg-ui-charcoal text-white' : 'text-ui-charcoal hover:bg-ui-charcoal/10'
+            ]"
+          >
+            <Zap class="w-4 h-4" />
+          </button>
+
+          <!-- 3. Ledger -->
           <button
             id="nav-btn-ledger"
             @click="scrollToSection('section-financial-ledger', 'ledger')"
@@ -202,7 +192,7 @@ const scrollToSection = (id, sectionName) => {
             <Coins class="w-4 h-4" />
           </button>
 
-          <!-- 5. History / Profile -->
+          <!-- 4. History -->
           <button
             id="nav-btn-history"
             @click="scrollToSection('section-historical-records', 'history')"

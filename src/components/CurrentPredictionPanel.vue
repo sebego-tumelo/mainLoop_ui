@@ -71,69 +71,71 @@ const averageConfidence = computed(() => {
 
     <!-- Prediction Boards List -->
     <div v-if="currentPrediction" class="space-y-3">
-      <div
-        v-for="(set, idx) in currentPrediction.sets"
-        :key="set.id"
-        :id="`prediction-board-${idx + 1}`"
-        :class="[
-          'p-4 rounded-[24px] border transition-all',
-          (set.matchedNumbers?.length || 0) > 0 && isEvaluated
-            ? 'bg-metric-orange/30 border-ui-charcoal'
-            : 'bg-canvas-peach/20 border-ui-charcoal'
-        ]"
-      >
-        <!-- Board Header -->
-        <div class="flex items-center justify-between mb-3">
-          <div class="flex items-center gap-2">
-            <span class="ui-heading text-xs text-ui-charcoal">
-              Board #{{ set.setNumber || idx + 1 }}
-            </span>
-            <span class="text-[10px] font-bold text-ui-charcoal/70 bg-white px-2 py-0.5 rounded-full border border-ui-charcoal">
-              Synergy: <strong class="text-ui-charcoal">{{ set.confidenceScore || 82 }}%</strong>
-            </span>
+      <div class="max-h-[500px] overflow-y-auto pr-2 space-y-3">
+        <div
+          v-for="(set, idx) in currentPrediction.sets"
+          :key="set.id"
+          :id="`prediction-board-${idx + 1}`"
+          :class="[
+            'p-4 rounded-[24px] border transition-all',
+            (set.matchedNumbers?.length || 0) > 0 && isEvaluated
+              ? 'bg-metric-orange/30 border-ui-charcoal'
+              : 'bg-canvas-peach/20 border-ui-charcoal'
+          ]"
+        >
+          <!-- Board Header -->
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <span class="ui-heading text-xs text-ui-charcoal">
+                Board #{{ set.setNumber || idx + 1 }}
+              </span>
+              <span class="text-[10px] font-bold text-ui-charcoal/70 bg-white px-2 py-0.5 rounded-full border border-ui-charcoal">
+                Synergy: <strong class="text-ui-charcoal">{{ set.confidenceScore || 82 }}%</strong>
+              </span>
+            </div>
+
+            <div v-if="isEvaluated" class="flex items-center gap-1">
+              <span
+                :class="[
+                  'text-[10px] font-extrabold px-2.5 py-0.5 rounded-full border border-ui-charcoal',
+                  (set.winAmount || 0) > 0
+                    ? 'bg-metric-mint text-ui-charcoal'
+                    : 'bg-white text-ui-charcoal'
+                ]"
+              >
+                {{ (set.matchedNumbers?.length || 0) > 0
+                  ? `${set.matchedNumbers.length} Matched (${formatZAR(set.winAmount || 0)})`
+                  : '0 Matches' }}
+              </span>
+            </div>
+            <div v-else class="text-[10px] font-extrabold text-ui-charcoal/70 flex items-center gap-1">
+              <span>Target Draw</span>
+            </div>
           </div>
 
-          <div v-if="isEvaluated" class="flex items-center gap-1">
-            <span
-              :class="[
-                'text-[10px] font-extrabold px-2.5 py-0.5 rounded-full border border-ui-charcoal',
-                (set.winAmount || 0) > 0
-                  ? 'bg-metric-mint text-ui-charcoal'
-                  : 'bg-white text-ui-charcoal'
-              ]"
-            >
-              {{ (set.matchedNumbers?.length || 0) > 0
-                ? `${set.matchedNumbers.length} Matched (${formatZAR(set.winAmount || 0)})`
-                : '0 Matches' }}
-            </span>
+          <!-- Numbers row in board -->
+          <div class="flex items-center justify-between gap-1.5 sm:gap-2">
+            <LottoBall
+              v-for="(num, bIdx) in set.numbers"
+              :key="`pred-ball-${idx}-${num}`"
+              :number="num"
+              size="md"
+              :isMatched="set.matchedNumbers?.includes(num)"
+              :variant="
+                set.matchedNumbers?.includes(num)
+                  ? 'gold'
+                  : bIdx === 0
+                  ? 'peach'
+                  : bIdx === 1
+                  ? 'mint'
+                  : bIdx === 2
+                  ? 'lavender'
+                  : bIdx === 3
+                  ? 'rose'
+                  : 'default'
+              "
+            />
           </div>
-          <div v-else class="text-[10px] font-extrabold text-ui-charcoal/70 flex items-center gap-1">
-            <span>Target Draw</span>
-          </div>
-        </div>
-
-        <!-- Numbers row in board -->
-        <div class="flex items-center justify-between gap-1.5 sm:gap-2">
-          <LottoBall
-            v-for="(num, bIdx) in set.numbers"
-            :key="`pred-ball-${idx}-${num}`"
-            :number="num"
-            size="md"
-            :isMatched="set.matchedNumbers?.includes(num)"
-            :variant="
-              set.matchedNumbers?.includes(num)
-                ? 'gold'
-                : bIdx === 0
-                ? 'peach'
-                : bIdx === 1
-                ? 'mint'
-                : bIdx === 2
-                ? 'lavender'
-                : bIdx === 3
-                ? 'rose'
-                : 'default'
-            "
-          />
         </div>
       </div>
 

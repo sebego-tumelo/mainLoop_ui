@@ -48,7 +48,7 @@ const isDropdownOpen = ref(false);
     <!-- Winning Numbers Display -->
     <div class="p-4 rounded-[24px] flex flex-col items-center justify-center">
       <div class="text-[10px] uppercase font-extrabold tracking-wider text-ui-charcoal/70 mb-3 flex items-center gap-1.5">
-        <Sparkles class="w-3 h-3 text-ui-charcoal" />
+        
         <span>Winning Number Combination</span>
       </div>
       

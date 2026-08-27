@@ -119,20 +119,26 @@ const scrollToSection = (id, sectionName) => {
       <!-- Main Body Flowing Content -->
       <main class="flex-1 px-4 py-4 space-y-4">
 
-        <!-- 3. Latest Official Draw Results Banner -->
-        <LatestDrawPanel
-          id="section-latest-draw"
-          :draw="latestDraw"
-          :matchedNumbers="latestMatchedNumbers"
-        />
-
-        <!-- 2. Current Prediction Card with Goal progress bar & Tripartite sliders -->
+          <!-- 2. Current Prediction Card with Goal progress bar & Tripartite sliders -->
         <CurrentPredictionPanel
-          id="section-current-prediction"
           :currentPrediction="currentActivePrediction"
           :latestWinningNumbers="latestDraw.winningNumbers"
           :onOpenPredictModal="() => (isPredictModalOpen = true)"
         />
+        
+        <!-- 1. Financial Ledger 4-Quadrant Pastel Grid (Needs Satisfaction, Activity, Sleep, Wellness from image) -->
+        <FinancialLedgerPanel
+          :stats="financialStats"
+          :onOpenPrizeInfoModal="() => (isPrizeInfoModalOpen = true)"
+        />
+
+      
+
+        <!-- 3. Latest Official Draw Results Banner -->
+        <!-- <LatestDrawPanel
+          :draw="latestDraw"
+          :matchedNumbers="latestMatchedNumbers"
+        /> -->
 
         <!-- 4. Historical Records & Prediction Performance Log -->
         <HistoricalRecordsPanel
@@ -147,10 +153,33 @@ const scrollToSection = (id, sectionName) => {
           id="mobile-bottom-nav"
           class="max-w-xs sm:max-w-sm mx-auto bg-nav-sand text-ui-charcoal rounded-[24px] py-2.5 px-5 border border-ui-charcoal flex items-center justify-between pointer-events-auto transition-transform duration-200 hover:scale-[1.02]"
         >
-          <!-- 1. Home / Results -->
+          <!-- 1. Location / Results -->
+          <button
+            id="nav-btn-result"
+            @click="scrollToSection('section-latest-draw', 'result')"
+            title="Results"
+            :class="[
+              'p-2 rounded-full transition-all cursor-pointer',
+              activeSection === 'result' ? 'bg-ui-charcoal text-white' : 'text-ui-charcoal hover:bg-ui-charcoal/10'
+            ]"
+          >
+            <MapPin class="w-4 h-4" />
+          </button>
+
+          <!-- 2. AI Predict -->
+          <button
+            id="nav-btn-predict"
+            @click="isPredictModalOpen = true"
+            title="AI Predict"
+            class="p-2 rounded-full text-ui-charcoal hover:bg-ui-charcoal/10 transition-all cursor-pointer"
+          >
+            <Sparkles class="w-4 h-4" />
+          </button>
+
+          <!-- 3. Home / Center -->
           <button
             id="nav-btn-home"
-            @click="scrollToSection('section-latest-draw', 'home')"
+            @click="scrollToSection('section-current-prediction', 'home')"
             title="Home"
             :class="[
               'p-2 rounded-full transition-all cursor-pointer',
@@ -160,20 +189,7 @@ const scrollToSection = (id, sectionName) => {
             <Home class="w-4 h-4" />
           </button>
 
-          <!-- 2. Prediction -->
-          <button
-            id="nav-btn-predict-scroll"
-            @click="scrollToSection('section-current-prediction', 'prediction')"
-            title="Prediction"
-            :class="[
-              'p-2 rounded-full transition-all cursor-pointer',
-              activeSection === 'prediction' ? 'bg-ui-charcoal text-white' : 'text-ui-charcoal hover:bg-ui-charcoal/10'
-            ]"
-          >
-            <Zap class="w-4 h-4" />
-          </button>
-
-          <!-- 3. Ledger -->
+          <!-- 4. Ledger -->
           <button
             id="nav-btn-ledger"
             @click="scrollToSection('section-financial-ledger', 'ledger')"
@@ -186,7 +202,7 @@ const scrollToSection = (id, sectionName) => {
             <Coins class="w-4 h-4" />
           </button>
 
-          <!-- 4. History -->
+          <!-- 5. History / Profile -->
           <button
             id="nav-btn-history"
             @click="scrollToSection('section-historical-records', 'history')"

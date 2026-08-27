@@ -65,7 +65,7 @@ const colorClasses = computed(() => {
     <span class="relative z-10 tracking-tight font-mono">{{ formattedNumber }}</span>
     <span v-if="isMatched" class="absolute -top-1 -right-1 flex h-3.5 w-3.5">
       <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#F6BD51] opacity-75"></span>
-      <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-[#2C211C] text-white text-[8px] font-bold items-center justify-center border border-white">✓</span>
+      <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-[#F6BD51]"></span>
     </span>
   </div>
 </template>

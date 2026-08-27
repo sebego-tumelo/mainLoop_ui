@@ -60,10 +60,12 @@ const colorClasses = computed(() => {
       sizeClasses[size] || sizeClasses.md,
       colorClasses,
       className,
-      isMatched ? 'ring-2 ring-offset-1 ring-[#F6BD51] ring-offset-white animate-pulse' : '',
     ]"
   >
     <span class="relative z-10 tracking-tight font-mono">{{ formattedNumber }}</span>
+    <span v-if="isMatched" class="absolute inset-0 rounded-full">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#F6BD51] opacity-75"></span>
+    </span>
   </div>
 </template>
 

@@ -37,7 +37,6 @@ const averageConfidence = computed(() => {
     <!-- Header matching the Journal screen top from reference image -->
     <div class="flex items-center justify-between gap-2">
       <div class="flex items-center gap-2">
-        <span class="text-xl">🐾</span>
         <div>
           <div class="flex items-center gap-1.5">
             <span class="ui-heading text-xl tracking-tight text-ui-charcoal">{{ averageConfidence }}%</span>

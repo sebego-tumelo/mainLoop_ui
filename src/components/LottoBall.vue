@@ -48,7 +48,7 @@ const colorClasses = computed(() => {
   } else if (props.variant === 'rose') {
     return 'bg-metric-salmon/60 text-ui-charcoal border border-ui-charcoal';
   } else {
-    return 'bg-white text-ui-charcoal border border-ui-charcoal';
+    return 'bg-ui-charcoal text-nav-sand border border-ui-charcoal font-black';
   }
 });
 </script>

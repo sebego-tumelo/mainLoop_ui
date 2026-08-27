@@ -21,7 +21,7 @@ const isDropdownOpen = ref(false);
 <template>
   <section
     id="section-latest-draw"
-    class="w-full bg-white rounded-[24px] p-4 border border-ui-charcoal space-y-4 transition-all"
+    class="w-full rounded-[24px] p-4 space-y-4 transition-all"
   >
     <!-- Top Header mimicking the Insights section from reference image -->
     <div class="flex items-center justify-between gap-2">
@@ -48,7 +48,7 @@ const isDropdownOpen = ref(false);
     </div>
 
     <!-- Winning Numbers Display -->
-    <div class="p-4 rounded-[24px] bg-canvas-peach/20 border border-ui-charcoal flex flex-col items-center justify-center">
+    <div class="p-4 rounded-[24px] flex flex-col items-center justify-center">
       <div class="text-[10px] uppercase font-extrabold tracking-wider text-ui-charcoal/70 mb-3 flex items-center gap-1.5">
         <Sparkles class="w-3 h-3 text-ui-charcoal" />
         <span>Winning Number Combination</span>
@@ -61,7 +61,7 @@ const isDropdownOpen = ref(false);
           :id="`ball-win-${num}`"
           :number="num"
           size="lg"
-          variant="gold"
+          variant="default"
           :isMatched="matchedNumbers?.includes(num)"
         />
       </div>

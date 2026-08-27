@@ -39,11 +39,11 @@ const weekDays = [
     <div class="flex items-center justify-between gap-2 max-w-lg mx-auto mb-3">
       <div class="flex items-center gap-2">
         <div class="w-8 h-8 rounded-full bg-ui-charcoal text-nav-sand flex items-center justify-center font-black text-sm">
-          5
+          27
         </div>
         <div>
           <h1 class="ui-heading text-lg tracking-wider text-ui-charcoal">
-            TODAY
+            THURSDAY
           </h1>
         </div>
       </div>

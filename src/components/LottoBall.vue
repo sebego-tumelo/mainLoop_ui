@@ -62,8 +62,6 @@ const colorClasses = computed(() => {
       className,
     ]"
   >
-    <!-- Specular ball gloss highlight -->
-    <span class="absolute top-1 left-2 w-2 h-1 bg-white/50 rounded-full blur-[0.4px] pointer-events-none" />
     <span class="relative z-10 tracking-tight font-mono">{{ formattedNumber }}</span>
     <span v-if="isMatched" class="absolute -top-1 -right-1 flex h-3.5 w-3.5">
       <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#F6BD51] opacity-75"></span>
